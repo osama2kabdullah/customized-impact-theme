@@ -1,0 +1,66 @@
+<div>
+  <h2 class="custom-collection-grid-heading">{{ section.settings.heading }}</h2>
+</div>
+<div class="custom-collection-grid-container">
+
+  {% for block in section.blocks %}
+    {% if block.settings.collection != blank %}
+      {% assign collection = block.settings.collection %}
+      <a href="{{ collection.url }}">
+        <div class="custom-collection-grid-item">
+          {% if collection.featured_image != blank %}
+            {{ collection.featured_image | image_url: width: 500 | image_tag: alt: collection.featured_image.alt }}
+          {% else %}
+
+          {% endif %}
+          <div class="custom-collection-grid-title">{{ collection.title }}</div>
+          <div class="custom-collection-grid-overlay"></div>
+        </div>
+      </a>
+
+    {% else %}
+      <div class="custom-collection-grid-item">
+        {{ 'collection-1' | placeholder_svg_tag }}
+        <div class="custom-collection-grid-title">Collection title</div>
+        <div class="custom-collection-grid-overlay"></div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Custom collection grid",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Heading",
+      "label": "Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom collection grid"
+    }
+  ]
+}
+{% endschema %}
