@@ -1,0 +1,89 @@
+<div class="custom-image-with-text">
+  <div class="custom-image-with-text-content">
+    <h2 class="custom-image-with-text-heading">Title Goes Here</h2>
+    <p class="custom-image-with-text-paragraph">
+      This is a sample paragraph describing something about the content. You can replace this with your own content.
+    </p>
+    <a href="#" class="custom-image-with-text-btn">Read More</a>
+  </div>
+  <div class="custom-image-with-text-img">
+    {% if section.settings.image_with_text_image != blank %}
+      {{
+        section.settings.image_with_text_image
+        | image_url: width: 500
+        | image_tag: alt: section.settings.image_with_text_image.alt
+      }}
+    {% else %}
+      {{ 'image' | placeholder_svg_tag }}
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom image with text",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_with_text_image",
+      "label": "Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Heading",
+          "label": "Heading"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "name": "paragraph",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "paragraph",
+          "label": "Paragraph",
+          "default": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quibusdam quam error quae ad voluptates est, itaque sequi dignissimos fuga cumque nobis? Veniam consectetur sunt fugit, ipsam perferendis minima debitis!</p>"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "link_title",
+          "label": "Heading",
+          "default": "Button title"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom image with text"
+    }
+  ]
+}
+{% endschema %}
