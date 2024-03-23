@@ -1,0 +1,85 @@
+<div class="custom-video-grid-container">
+  <h2 class="title">{{ section.settings.title }}</h2>
+  <p class="text">
+    {{ section.settings.video_message }}
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      class="bi bi-play-circle-fill"
+      viewBox="0 0 16 16"
+    >
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/>
+    </svg>
+  </p>
+  <div class="video-section">
+    {% for block in section.blocks %}
+      <div>
+        {{
+          block.settings.video
+          | video_tag: class: 'video-play', autoplay: true, loop: true, muted: true, controls: false
+        }}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% javascript %}
+  document.addEventListener('DOMContentLoaded', function () {
+    let videos = document.querySelectorAll('.custom-video-grid-container .video-play');
+
+    videos.forEach(function (video) {
+      video.addEventListener('click', function () {
+        if (video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+    });
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Custom video grid",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Section ttitle goes here",
+      "label": "Section Title"
+    },
+    {
+      "type": "text",
+      "id": "video_message",
+      "default": "WATCH THE VIDÉO",
+      "label": "Video message"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "video",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "A Shopify-hosted video"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom video grid"
+    }
+  ]
+}
+{% endschema %}
