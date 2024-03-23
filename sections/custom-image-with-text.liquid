@@ -1,10 +1,24 @@
-<div class="custom-image-with-text">
+<div
+  class="custom-image-with-text"
+  style="background: {{ section.settings.bg_color }};color: {{ section.settings.text_color }};"
+>
   <div class="custom-image-with-text-content">
-    <h2 class="custom-image-with-text-heading">Title Goes Here</h2>
-    <p class="custom-image-with-text-paragraph">
-      This is a sample paragraph describing something about the content. You can replace this with your own content.
-    </p>
-    <a href="#" class="custom-image-with-text-btn">Read More</a>
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'button' %}
+          <a
+            href="{{ block.settings.button_link }}"
+            style="background: {{ block.settings.button_bg_color }};color: {{ block.settings.btn_text_color }};"
+            class="custom-image-with-text-btn"
+          >
+            {{- block.settings.btn_label -}}
+          </a>
+        {% when 'heading' %}
+          <h2 class="custom-image-with-text-heading">{{ block.settings.heading }}</h2>
+        {% when 'paragraph' %}
+          <p class="custom-image-with-text-paragraph">{{ block.settings.paragraph }}</p>
+      {% endcase %}
+    {% endfor %}
   </div>
   <div class="custom-image-with-text-img">
     {% if section.settings.image_with_text_image != blank %}
@@ -32,6 +46,18 @@
       "type": "image_picker",
       "id": "image_with_text_image",
       "label": "Image"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#474e31"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#fff"
     }
   ],
   "blocks": [
@@ -68,21 +94,34 @@
       "settings": [
         {
           "type": "text",
-          "id": "link_title",
-          "label": "Heading",
+          "id": "btn_label",
+          "label": "button title",
           "default": "Button title"
         },
         {
           "type": "url",
           "id": "button_link",
           "label": "Button link"
+        },
+        {
+          "type": "color",
+          "id": "button_bg_color",
+          "label": "Button Background color",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "btn_text_color",
+          "label": "Button Text color",
+          "default": "#000000"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Custom image with text"
+      "name": "Custom image with text",
+      "blocks": [{"type": "heading"}, {"type": "paragraph"}, {"type": "button"}]
     }
   ]
 }
