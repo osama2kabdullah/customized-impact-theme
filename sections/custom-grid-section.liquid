@@ -1,0 +1,112 @@
+<div class="custom-grid-container">
+
+  <div class="title-wrapper">  
+    {% if section.settings.title != blank %}
+      <h1 class="title">{{ section.settings.title }}</h1>
+    {% endif %}
+  </div>
+
+  {% for block in section.blocks %}
+    <div class="card">
+      {% if block.settings.image != blank %}
+        {{ block.settings.image | image_url: width: 300, height: 400 | image_tag: widths: '200, 300, 400' }}
+      {% endif %}
+      <div style="background: {{ block.settings.text_bg }};color: {{ block.settings.text_color }};">
+        <div>
+          {% if block.settings.button_label != blank %}
+            <button style="background: {{ block.settings.btn_bg }};color: {{ block.settings.btn_color }};">{{ block.settings.button_label }}</button>
+          {% endif %}
+          <div>{{ block.settings.paragraph_1st }}</div>
+        </div>
+        <div>{{ block.settings.paragraph_2nd }}</div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Custom grid section",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Section ttitle goes here",
+      "label": "Section Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "header",
+          "content": "Button"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "Label"
+        },
+        {
+          "type": "color",
+          "id": "btn_color",
+          "label": "Button text",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "btn_bg",
+          "label": "Button background",
+          "default": "#000000"
+        },                
+        {
+          "type": "header",
+          "content": "Text"
+        },
+        {
+          "type": "richtext",
+          "id": "paragraph_1st",
+          "label": "Forst Paragraph",
+          "default": "<h1>6x</h1><p>plus durable que les filtres pour carafe Notre recharge tient 6 contre seulement 1 moispour les recharges habituellesde carafe.</p>"
+        },
+        {
+          "type": "richtext",
+          "id": "paragraph_2nd",
+          "label": "Second Paragraph",
+          "default": "<p>plus durable que les filtres pour carafe Notre recharge tient 6 contre seulement 1 moispour les recharges habituellesde carafe.</p>"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "text_bg",
+          "label": "Text background",
+          "default": "#faebd7"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom grid section"
+    }
+  ]
+}
+{% endschema %}
