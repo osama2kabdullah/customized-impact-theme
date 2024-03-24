@@ -1,0 +1,122 @@
+{% style %}
+  .marquee-swiper-{{ section.id }} {
+    background-color: {{ section.settings.body_bg }};
+    color: {{ section.settings.body_text }};
+    font-size: {{ section.settings.font_size }}px;
+  }
+  .marquee-swiper-{{ section.id }} .swiper-wrapper {
+    transition-timing-function: linear;
+    padding: 20px 0;
+  }
+{% endstyle %}
+
+<div class="marquee-swiper-{{ section.id }} swiper">
+  <div class="swiper-wrapper">
+    {% for block in section.blocks %}
+      <div class="swiper-slide">
+        <p>{{ block.settings.text }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  function runMarquee(){
+    new Swiper('.marquee-swiper-{{ section.id }}', {
+      spaceBetween: 100,
+      slidesPerView: 1,
+      loop: true,
+      spaceBetween: 30,
+      centeredSlides: true,
+      speed: 4000,
+      allowTouchMove: false,
+      autoplay: {
+        delay: 0,
+        disableOnInteraction: false,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: {{ section.settings.text_in_page }},
+          spaceBetween: 30,
+        },
+      },
+    });
+  }
+  document.addEventListener("shopify:section:load", function(event) {
+    runMarquee();
+  });  
+  document.addEventListener('DOMContentLoaded', (event) => {
+    runMarquee();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Custom scrolling text",
+  "tag": "section",
+  "class": "section custom-scrolling-text",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "body_bg",
+      "label": "Body background"
+    },
+    {
+      "type": "color",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "text_in_page",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "label": "Text in a page",
+      "default": 4,
+      "info": "if texts are collapsing each other, then specify the number of text in display at a time. result will display after hit on the \"save\" button."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "text",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "default": "My text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom scrolling text",
+      "blocks": [
+        { "type": "text" },
+        { "type": "text" },
+        { "type": "text" },
+        { "type": "text" },
+        { "type": "text" },
+        { "type": "text" }
+      ]
+    }
+  ]
+}
+{% endschema %}
