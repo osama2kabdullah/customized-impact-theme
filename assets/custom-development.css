@@ -15,7 +15,10 @@
 
 .custom-banner-section .custom-banner {
   text-align: center;
-  color: white;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 .custom-banner-section .custom-banner .content {
   margin-top: 5rem;
