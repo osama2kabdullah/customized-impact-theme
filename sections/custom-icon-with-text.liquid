@@ -1,0 +1,49 @@
+<div class="Custom-icon-with-text-container">
+  <div class="card-container">
+    {% for block in section.blocks %}
+      <div class="small-card">
+        {% if block.settings.image != blank %}
+          {{ block.settings.image | image_url: width: block.settings.image.width | image_tag }}
+        {% endif %}
+        <div>{{ block.settings.paragraph }}</div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom icon with text",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "paragraph",
+          "label": "Paragraph",
+          "default": "<h2>Paragraph<h2><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom icon with text",
+      "blocks": [{ "type": "card" }, { "type": "card" }, { "type": "card" }, { "type": "card" }]
+    }
+  ]
+}
+{% endschema %}
