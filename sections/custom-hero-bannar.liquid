@@ -1,0 +1,93 @@
+{% style %}
+.hero-custom-banner-section {
+    padding: 0;
+  }
+  .custom-banner-section {
+    background-image: url('{{ section.settings.image | image_url:  width: 1132, height: 750 }}'), linear-gradient(rgb(0 0 0 / 20%), rgb(0 0 0 / 20%));
+  }
+{% endstyle %}
+
+<div
+  class="container-fluid custom-banner-section"
+>
+  <div class="custom-banner">
+    <div class="content">
+      <h1>{{ section.settings.title }}</h1>
+      <p>{{ section.settings.paragraph }}</p>
+    </div>
+    <div class="btn-group">
+      {% if section.settings.buttn_1_text != blank %}
+        <a href="{{ section.settings.button_link }}">
+          <button class="custom-btn">{{ section.settings.buttn_1_text }}</button>
+        </a>
+      {% endif %}
+      {% if section.settings.buttn_2_text != blank %}
+        <a href="{{ section.settings.button_link_2 }}">
+          <button class="custom-btn btn-mt-5">{{ section.settings.buttn_2_text }}</button>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom hero bannar",
+  "tag": "section",
+  "class": "section hero-custom-banner-section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "1132x750 pixels are recommended"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Section title goes here",
+      "label": "Section Title"
+    },
+    {
+      "type": "richtext",
+      "id": "paragraph",
+      "default": "<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, aspernatur asperiores vel praesentium quo alias modi delectus tempore quis nobis hic! Aut, repellendus! Obcaecati enim debitis, assumenda aut mollitia consectetur.</p>",
+      "label": "Section description"
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "buttn_1_text",
+      "label": "Button 1 label",
+      "default": "Button 1"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link 1"
+    },
+    {
+      "type": "text",
+      "id": "buttn_2_text",
+      "label": "Button 2 label",
+      "default": "Button 2"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Button link 2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom hero bannar"
+    }
+  ]
+}
+{% endschema %}
