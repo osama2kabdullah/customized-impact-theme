@@ -238,6 +238,103 @@
   font-size: 1rem;
 }
 
+/* swiper css code */
+.custom-product-slider-container .card-image img {
+  filter: drop-shadow(-44px 30px 3px #a09e9e);
+}
+.custom-product-slider-container .card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2rem 1.7rem;
+  /* max-width: 25rem; */
+}
+
+.custom-product-slider-container .card-image img {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  height: auto;
+}
+
+.custom-product-slider-container .card-body h4 {
+  font-size: 1.5rem;
+}
+
+.custom-product-slider-container .card-body .price {
+  margin-top: 2.5rem;
+}
+
+.custom-product-slider-container .card-body .card-btn {
+  background-color: #fff;
+  border: 2px solid black;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.custom-product-slider-container .card-icons {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+.custom-product-slider-container .card-icons img {
+  width: 1rem;
+  display: block;
+}
+.custom-product-slider-container .fruits-card-section {
+  display: grid;
+  grid-template-columns: repeat(1fr);
+  gap: 1.4rem;
+}
+.custom-product-slider-container .swiper-wrapper {
+  margin-bottom: 2.5rem;
+}
+
+.custom-product-slider-container .swiper-controller {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.custom-product-slider-container .button-prev,
+.custom-product-slider-container .button-next {
+  width: 2rem;
+  height: 2rem;
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.custom-product-slider-container .button-prev svg,
+.custom-product-slider-container .button-next svg {
+  width: 1.2rem;
+}
+
+.custom-product-slider-container .swiper-pagination {
+  transition: all 0.5s;
+  position: static;
+  width: auto !important;
+}
+
+.custom-product-slider-container .swiper-pagination .swiper-pagination-bullet-active {
+  width: 1.5rem !important;
+  border-radius: 5px !important;
+  background-color: #333;
+}
+
 /* Media query for responsiveness */
 @media (max-width: 768px) {
   /* image-with-text */
@@ -279,6 +376,11 @@
   }
   .Custom-icon-with-text-container .small-card {
     padding: 10px;
+  }
+  /* swiperjs slider code */
+  .custom-product-slider-container .fruits-card-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 

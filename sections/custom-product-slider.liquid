@@ -1,0 +1,152 @@
+<div class="custom-product-slider-container">
+  <div class="swiper swiper-{{ section.id }}">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      {% assign Collection = section.settings.collection %}
+      {% if section.settings.collection != blank %}
+        {% for Product in Collection.products limit: section.settings.products_per_page %}
+          <div class="swiper-slide">
+            {%- render 'custom-product-card', product: Product, show_badges: true -%}
+
+            {% comment %} <div class="card">
+              <div class="card-image">
+                {{ Product.featured_image | image_url: width: 200 | image_tag: alt: Product.featured_image.alt }}
+              </div>
+              <div class="card-body">
+                <p>{{ Product.price | money }}</p>
+                <h4>{{ Product.title }}</h4>
+                <div class="desc">{{ Product.description | truncate: 20 }}</div>
+                <div>
+                  <button class="card-btn">Add To Cart</button>
+                </div>
+                <div class="card-icons">
+                  <img src="./assets/fruits.png" alt="">
+                  <img src="./assets/fruits.png" alt="">
+                  <img src="./assets/fruits.png" alt="">
+                  <img src="./assets/fruits.png" alt="">
+                  <img src="./assets/fruits.png" alt="">
+                </div>
+              </div>
+            </div> {% endcomment %}
+
+          </div>
+        {% endfor %}
+      {% else %}
+        {%- for i in (1..section.settings.products_per_page) -%}
+          <div class="swiper-slide">
+            <div class="card">
+              <div class="card-image">
+                {{ 'collection-1' | placeholder_svg_tag }}
+              </div>
+              <div class="card-body">
+                <p class="price">9,99€</p>
+                <h4>Citron Gingembre</h4>
+                <p class="desc">Sans sucres ajoutés</p>
+                <div>
+                  <button class="card-btn">Ajouter aupanier</button>
+                </div>
+                <div class="card-icons">
+                  <img src="./assets/fruits.png" alt="">
+                  <img src="./assets/fruits.png" alt="">
+                  <img src="./assets/fruits.png" alt="">
+                  <img src="./assets/fruits.png" alt="">
+                  <img src="./assets/fruits.png" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="swiper-controller">
+      <button class="button-prev">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+        </svg>
+      </button>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+
+      <button class="button-next">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const swiper = new Swiper('.swiper-{{ section.id }}', {
+      speed: 400,
+      spaceBetween: 100,
+      slidesPerView: 1,
+      loop: false,
+      spaceBetween: 10,
+      navigation: {
+        nextEl: '.button-next',
+        prevEl: '.button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 4,
+          spaceBetween: 30,
+        },
+        1400: {
+          slidesPerView: 4,
+          spaceBetween: 30,
+        },
+      },
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Custom product slider",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "number",
+      "id": "products_per_page",
+      "label": "Products per page",
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom product slider"
+    }
+  ]
+}
+{% endschema %}
