@@ -8954,7 +8954,7 @@ split-lines {
 }
 
 .text-on-sale {
-  color: rgb(var(--on-sale-text));
+  color: rgb(var(--text-color));
 }
 
 .text-stroke {
