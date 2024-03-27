@@ -1,45 +1,81 @@
-<div class="custom-video-grid-container">
-  <h2 class="title">{{ section.settings.title }}</h2>
-  <p class="text">
-    {{ section.settings.video_message }}
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
-      fill="currentColor"
-      class="bi bi-play-circle-fill"
-      viewBox="0 0 16 16"
-    >
-      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/>
-    </svg>
-  </p>
-  <div class="video-section">
-    {% for block in section.blocks %}
-      <div>
-        {{
-          block.settings.video
-          | video_tag: class: 'video-play', autoplay: true, loop: true, muted: true, controls: false
-        }}
-      </div>
-    {% endfor %}
+{% style %}
+  .custom-video-grid-container-{{ section.id }} .splide__pagination,
+  .custom-video-grid-container-{{ section.id }} .splide__arrows {
+    display: none;
+  }
+{% endstyle %}
+
+<div class="splide custom-video-grid-container custom-video-grid-container-{{ section.id }}">
+  <div class="section-heading" style="text-align: center;">
+    <h2 class="title">{{ section.settings.title }}</h2>
+    <p class="text">
+      {{ section.settings.video_message }}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-play-circle-fill"
+        viewBox="0 0 16 16"
+      >
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/>
+      </svg>
+    </p>
+  </div>
+  <br>
+  <div class="splide__track">
+    <div class="splide__list">
+      {% for block in section.blocks %}
+        <div class="splide__slide">
+          <div>
+            {{ block.settings.video | video_tag: class: "video-play", autoplay: true, loop: true, muted: true, controls: false, style: "border-radius: 10px;" }}
+            <br>
+            
+            <div style="text-align: center;">
+              {% if block.settings.image != blank %}
+                {{ block.settings.image | image_url: width: 300, height: 300 | image_tag }}
+              {% endif %}
+              <div style="max-width: 200px;margin: auto;">
+                {{ block.settings.paragraph }}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      {% endfor %}
+    </div>
   </div>
 </div>
 
-{% javascript %}
+<script>
   document.addEventListener('DOMContentLoaded', function () {
-    let videos = document.querySelectorAll('.custom-video-grid-container .video-play');
 
+    let videos = document.querySelectorAll(".custom-video-grid-container-{{ section.id }} .video-play");
     videos.forEach(function (video) {
-      video.addEventListener('click', function () {
+      video.addEventListener("click", function () {
         if (video.paused) {
           video.play();
         } else {
           video.pause();
         }
       });
-    });
-  });
-{% endjavascript %}
+    });  
+
+    new Splide('.custom-video-grid-container-{{ section.id }}', {
+      perPage: 3,
+      perMove: 1,
+      drag: false,
+      gap: '2rem',
+      breakpoints: {
+        568: {
+          perPage: 2,
+          gap: '5px',
+          drag: true,
+        },
+      },
+    }).mount();
+  })
+</script>
 
 {% schema %}
 {
@@ -49,6 +85,7 @@
   "disabled_on": {
     "groups": ["header", "custom.overlay"]
   },
+  "max_blocks": 3,
   "settings": [
     {
       "type": "inline_richtext",
@@ -72,6 +109,21 @@
           "type": "video",
           "id": "video",
           "label": "A Shopify-hosted video"
+        },
+        {
+          "type": "header",
+          "content": "Paragraph"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "paragraph",
+          "label": "Paragraph",
+          "default": "<h5>Paragraph</h5><p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>"
         }
       ]
     }

@@ -1,32 +1,110 @@
-<div>
-  <h2 class="custom-collection-grid-heading">{{ section.settings.heading }}</h2>
-</div>
-<div class="custom-collection-grid-container">
+{% style %}
+  .custom-collection-grid-{{ section.id }} .splide__pagination,
+  .custom-collection-grid-{{ section.id }} .splide__arrows {
+    display: none;
+  }
+  .my-slider-progress {
+    background: #ccc;
+  }
+  .my-slider-progress-bar {
+    background: red;
+    height: 2px;
+    transition: width 400ms ease;
+    width: 0;
+  }
+{% endstyle %}
 
-  {% for block in section.blocks %}
-    {% if block.settings.collection != blank %}
-      {% assign collection = block.settings.collection %}
-      <a href="{{ collection.url }}">
-        <div class="custom-collection-grid-item">
-          {% if collection.featured_image != blank %}
-            {{ collection.featured_image | image_url: width: 500 | image_tag: alt: collection.featured_image.alt }}
+<div
+  class="splide custom-collection-grid custom-collection-grid-{{ section.id }}"
+  aria-label="Splide Basic HTML Example"
+>
+  <div class="section-heading">
+    <h2>{{ section.settings.heading }}</h2>
+    <a href="{{ section.settings.url }}">
+      {{- section.settings.url_text }}
+
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-arrow-right"
+        viewBox="0 0 16 16"
+      >
+        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+      </svg>
+    </a>
+  </div>
+  <br>
+  <div class="splide__track">
+    <div class="splide__list">
+      {% for block in section.blocks %}
+        <div class="splide__slide">
+          {% if block.settings.collection != blank %}
+            {% assign collection = block.settings.collection %}
+            <a href="{{ collection.url }}">
+              <div class="custom-collection-grid-item">
+                {% if collection.featured_image != blank %}
+                  {{
+                    collection.featured_image
+                    | image_url: width: 500
+                    | image_tag: alt: collection.featured_image.alt
+                  }}
+                {% else %}
+
+                {% endif %}
+                <div class="custom-collection-grid-title">{{ collection.title }}</div>
+                <div class="custom-collection-grid-overlay"></div>
+              </div>
+            </a>
+
           {% else %}
-
+            <div class="custom-collection-grid-item">
+              {{ 'collection-1' | placeholder_svg_tag }}
+              <div class="custom-collection-grid-title">Collection title</div>
+              <div class="custom-collection-grid-overlay"></div>
+            </div>
           {% endif %}
-          <div class="custom-collection-grid-title">{{ collection.title }}</div>
-          <div class="custom-collection-grid-overlay"></div>
         </div>
-      </a>
+      {% endfor %}
+    </div>
+  </div>
+  <br>
 
-    {% else %}
-      <div class="custom-collection-grid-item">
-        {{ 'collection-1' | placeholder_svg_tag }}
-        <div class="custom-collection-grid-title">Collection title</div>
-        <div class="custom-collection-grid-overlay"></div>
-      </div>
-    {% endif %}
-  {% endfor %}
+  <div class="my-slider-progress">
+    <div class="my-slider-progress-bar"></div>
+  </div>
+
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+
+    var splide = new Splide('.custom-collection-grid-{{ section.id }}', {
+      perPage: 3,
+      perMove: 1,
+      drag: false,
+      gap: '1rem',
+      breakpoints: {
+        568: {
+          perPage: 2,
+          gap: '5px',
+          drag: true,
+        },
+      },
+    });
+    var bar    = splide.root.querySelector( '.my-carousel-progress-bar' );
+    
+    // Updates the bar width whenever the carousel moves:
+    splide.on( 'mounted move', function () {
+      var end  = splide.Components.Controller.getEnd() + 1;
+      var rate = Math.min( ( splide.index + 1 ) / end, 1 );
+      bar.style.width = String( 100 * rate ) + '%';
+    } );
+    splide.mount();
+
+  });
+</script>
 
 {% schema %}
 {
@@ -42,6 +120,17 @@
       "id": "heading",
       "default": "Heading",
       "label": "Heading"
+    },
+    {
+      "id": "url_text",
+      "label": "Url text",
+      "default": "Url",
+      "type": "text"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "Url"
     }
   ],
   "blocks": [
