@@ -1,3 +1,18 @@
+{% style %}
+.custom-image-with-text-content .icon-text svg{
+  width: 30px;
+  height: 30px;
+}
+
+.custom-image-with-text-content .icon-text {
+  padding: 16px 0;
+  font-size: larger;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+{% endstyle %}
+
 <div
   class="custom-image-with-text"
   style="background: {{ section.settings.bg_color }};color: {{ section.settings.text_color }};"
@@ -17,6 +32,14 @@
           <h2>{{ block.settings.heading }}</h2>
         {% when 'paragraph' %}
           <p class="custom-image-with-text-paragraph">{{ block.settings.paragraph }}</p>
+          <br>
+        {% when 'icon_text' %}
+          <p class="icon-text">
+            {{ block.settings.icon }}
+            <span>
+              {{ block.settings.text }}
+            </span>
+          </p>
       {% endcase %}
     {% endfor %}
   </div>
@@ -114,6 +137,23 @@
           "id": "btn_text_color",
           "label": "Button Text color",
           "default": "#000000"
+        }
+      ]
+    },
+    {
+      "type": "icon_text",
+      "name": "Icon with text",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "inline_richtext",
+          "label": "Text",
+          "id": "text",
+          "default": "Text with Icon"
         }
       ]
     }
