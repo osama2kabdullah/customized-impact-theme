@@ -41,7 +41,7 @@
         {{- section.settings.content -}}
       </div>
 
-      <reveal-items class="logo-list {% unless section.settings.stack_mobile %}scroll-area bleed sm:unbleed{% endunless %}">
+      <reveal-items style="display: flex;" class="logo-list {% unless section.settings.stack_mobile %}scroll-area bleed sm:unbleed{% endunless %}">
         {%- for block in section.blocks -%}
           {%- capture block_content -%}
             {%- if block.settings.logo != blank -%}
