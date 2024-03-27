@@ -197,30 +197,40 @@
   border-radius: 20px;
   overflow: hidden;
 }
-.custom-grid-container .card > :nth-child(2) h1 {
-  font-family: var(--heading-font-family);
-  font-weight: var(--heading-font-weight);
-  font-style: var(--heading-font-style);
-  letter-spacing: var(--heading-letter-spacing);
-  text-transform: var(--heading-text-transform);
-  font-size: var(--text-h1);
-  line-height: 1.1;
-}
 .custom-grid-container .title {
   text-align: center;
-  font-family: var(--heading-font-family);
-  font-weight: var(--heading-font-weight);
-  font-style: var(--heading-font-style);
-  letter-spacing: var(--heading-letter-spacing);
-  text-transform: var(--heading-text-transform);
-  font-size: var(--text-h1);
-  line-height: 1.1;
 }
 .custom-grid-container .title-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+.custom-grid-container :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--heading-font-family);
+  font-weight: var(--heading-font-weight);
+  font-style: var(--heading-font-style);
+  letter-spacing: var(--heading-letter-spacing);
+  text-transform: var(--heading-text-transform);
+  line-height: 1.1;
+}
+.custom-grid-container h1{
+  font-size: var(--text-h1);
+}
+.custom-grid-container h2{
+  font-size: var(--text-h2);
+}
+.custom-grid-container h3{
+  font-size: var(--text-h3);
+}
+.custom-grid-container h4{
+  font-size: var(--text-h4);
+}
+.custom-grid-container h5{
+  font-size: var(--text-h5);
+}
+.custom-grid-container h6{
+  font-size: var(--text-h6);
 }
 .custom-grid-container {
   display: grid;
@@ -449,6 +459,22 @@
   .custom-grid-container {
     grid-template-columns: repeat(1, 1fr); /* Single column layout for mobile */
     gap: 1rem;
+  }
+  .custom-grid-container .card > :nth-child(2) {
+    padding: 10px;
+    gap: 1rem;
+  }
+  .custom-grid-container .card:nth-child(even) {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .custom-grid-container .card:nth-child(odd) {
+    display: flex;
+    flex-direction: row;
+  }
+  .custom-grid-container .card > * {
+    width: 100%;
+    height: fit-content;
   }
   .custom-grid-container .card {
     gap: 0.5rem;
