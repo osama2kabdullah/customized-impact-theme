@@ -443,7 +443,7 @@
   }
   /* image-with-text */
   .custom-image-with-text {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
   .custom-image-with-text-content,
   .custom-image-with-text-img {
