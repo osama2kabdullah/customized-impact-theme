@@ -438,7 +438,6 @@
   }
   .custom-grid-container .card > * {
     width: 100%;
-    height: fit-content;
   }
   .custom-grid-container .card {
     gap: 0.5rem;

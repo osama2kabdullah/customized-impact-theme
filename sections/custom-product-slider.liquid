@@ -8,28 +8,6 @@
         {% for Product in Collection.products limit: section.settings.products_per_page %}
           <div class="swiper-slide">
             {%- render 'custom-product-card', product: Product, show_badges: true -%}
-
-            {% comment %} <div class="card">
-              <div class="card-image">
-                {{ Product.featured_image | image_url: width: 200 | image_tag: alt: Product.featured_image.alt }}
-              </div>
-              <div class="card-body">
-                <p>{{ Product.price | money }}</p>
-                <h4>{{ Product.title }}</h4>
-                <div class="desc">{{ Product.description | truncate: 20 }}</div>
-                <div>
-                  <button class="card-btn">Add To Cart</button>
-                </div>
-                <div class="card-icons">
-                  <img src="./assets/fruits.png" alt="">
-                  <img src="./assets/fruits.png" alt="">
-                  <img src="./assets/fruits.png" alt="">
-                  <img src="./assets/fruits.png" alt="">
-                  <img src="./assets/fruits.png" alt="">
-                </div>
-              </div>
-            </div> {% endcomment %}
-
           </div>
         {% endfor %}
       {% else %}
