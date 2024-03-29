@@ -3,7 +3,8 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
-  .splide-{{ section.id }} .splide__arrows{
+  .splide-{{ section.id }} .splide__arrows,
+  .splide-{{ section.id }} .mobile-splide__arrows {
       position: unset;
       display: flex;
       gap: 2rem;
@@ -15,7 +16,17 @@
       justify-content: space-between;
       padding-top: 3rem;
   }
-  .splide-{{ section.id }} .splide__arrow {
+  .splide-{{ section.id }} .splide__slide {
+    opacity: 0.6;
+  }
+  .splide-{{ section.id }} .splide__slide.is-active {
+    opacity: 1;
+  }
+  .splide-{{ section.id }} .splide__slide {
+    width: 80% !important;
+  }
+  .splide-{{ section.id }} .splide__arrow,
+  .splide-{{ section.id }} .mobile-splide__arrows button {
     border: 1px solid;
     position: unset;
     transform: unset;
@@ -23,25 +34,56 @@
     width: 50px;
     border-radius: 50px;
   }
+  .mobile-paragraph .splide__arrows{
+    display: none;
+  }
+  .splide-{{ section.id }} .mobile-paragraph,
+  .splide-{{ section.id }} .mobile-splide__arrows {
+    display: none;
+  }
+  .splide-{{ section.id }} .desktop-paragraph {
+    display: block;
+  }
+  .splide-{{ section.id }} .desktop-splide__arrows {
+    display: flex;
+  }
+  .mobile-paragraph {
+    display: none;
+  }
+
   @media (max-width: 768px) {
     .splide-{{ section.id }} {
       display: grid;
       gap: 2rem;
       grid-template-columns: repeat(1, 1fr);
     }
+    .splide-{{ section.id }} .splide__slide {
+      opacity: 1;
+    }
+    .splide-{{ section.id }} .splide__slide {
+      width: 100% !important;
+    }
+    .splide-{{ section.id }} .mobile-paragraph {
+      display: block;
+    }
+    .splide-{{ section.id }} .mobile-splide__arrows {
+      display: flex;
+    }
+    .splide-{{ section.id }} .desktop-paragraph {
+      display: none;
+    }
+    .splide-{{ section.id }} {
+      position: unset;
+    }
+    .mobile-paragraph {
+      display: block;
+    }
+    .splide-{{ section.id }} .desktop-splide__arrows {
+      position: absolute;
+      bottom: 0;
+    }
   }
 {% endstyle %}
-
-{% comment %}
-  <div class="custom-one-half-slider">
-    <div>
-      
-    </div>
-    <div>
-
-    </div>
-  </div>
-{% endcomment %}
 
 <div class="custom-one-half-slider">
   <div class="splide splide-{{ section.id }}" aria-label="Splide Basic HTML Example">
@@ -60,57 +102,88 @@
           {{ section.settings.title }}
         </div>
       </div>
-      <div class="splide__arrows"></div>
+      <div class="splide__arrows desktop-splide__arrows"></div>
     </div>
 
     <div class="splide__track">
       <div class="splide__list">
         {% for block in section.blocks %}
           <div class="splide__slide">
-            {% case block.type %}
-              {% when 'image' %}
+            <div class="one-half-slider-card" style="">
+              
+              <div>
                 {{
-                  block.settings.image
-                  | image_url: width: 400, height: 500
-                  | image_tag: alt: block.settings.image.alt, style: 'border-radius: 10px;width: 100%; height:100%;'
+                  block.settings.image_1
+                  | image_url: width: 300, height: 300
+                  | image_tag: alt: block.settings.image_1.alt, style: 'width: 100%;border-radius: 10px;'
                 }}
-              {% when 'video' %}
-                {{
-                  block.settings.video
-                  | video_tag:
-                    image_size: '400x',
-                    autoplay: true,
-                    loop: true,
-                    muted: true,
-                    controls: true,
-                    style: 'width: 100%;height: 100%;'
-                }}
-              {% when 'card' %}
-                <div class="one-half-slider-card" style="">
-                  {{
-                    block.settings.card_image
-                    | image_url: width: 300, height: 300
-                    | image_tag: alt: block.settings.card_image.alt, style: 'width: 100%;border-radius: 10px;'
-                  }}
-                  <div>{{ block.settings.paragraph }}</div>
+                <div class="desktop-paragraph">
+                  {% if block.settings.link_title_1 != blank %}
+                    <a href="{{ block.settings.link_1 }}" style="color: {{ block.settings.link_color }};background-color: {{ block.settings.link_bg }};" class="link-button">{{ block.settings.link_title_1 }}</a>
+                  {% endif %}
+                  {% if block.settings.link_title_2 != blank %}
+                    <a style="color: {{ block.settings.link_color }};background-color: {{ block.settings.link_bg }};" href="{{ block.settings.link_2 }}" class="link-button">{{ block.settings.link_title_2 }}</a>
+                  {% endif %}
                 </div>
-            {% endcase %}
+                <div class="desktop-paragraph">{{ block.settings.paragraph }}</div>
+              </div>
+
+              <div>
+                {% if block.settings.video != blank %}
+                    {{
+                      block.settings.video
+                      | video_tag:
+                        image_size: '400x',
+                        autoplay: true,
+                        loop: true,
+                        muted: true,
+                        controls: true,
+                        style: 'width: 100%;height: 100%;'
+                    }}
+                  {% elsif block.settings.image %}
+                    {{
+                      block.settings.image
+                      | image_url: width: 400, height: 500
+                      | image_tag: alt: block.settings.image.alt, style: 'border-radius: 10px;width: 100%; height:100%;'
+                    }}
+                {% endif %}
+              </div>
+              
+            </div>
           </div>
         {% endfor %}
       </div>
     </div>
-
   </div>
+
+  <div class="mobile-paragraph">
+    <div class="splide mobile-splide-{{ section.id }}">
+      <div style="display: none;" class="splide__arrows"></div>
+      <div class="splide__track">
+        <div class="splide__list">
+          {% for block in section.blocks %}
+            <div class="splide__slide">
+              <div style="
+                padding: 20px 0;
+            ">
+                {{ block.settings.paragraph }}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <script>
   document.addEventListener('DOMContentLoaded', (event) => {
     var splide = new Splide('.splide-{{ section.id }}', {
-      type: 'loop',
-      perPage: 2,
+      type: "loop",
       perMove: 1,
       drag: false,
-      gap: '1rem',
+      gap: '20px',
       breakpoints: {
         768: {
           perPage: 2,
@@ -120,7 +193,23 @@
         },
       },
     });
+    var mobile_splide = new Splide('.mobile-splide-{{ section.id }}', {
+      type: "loop",
+      perMove: 1,
+      drag: false,
+      gap: '20px',
+      breakpoints: {
+        768: {
+          perPage: 1,
+        },
+        468: {
+          perPage: 1,
+        },
+      },
+    });
+    splide.sync( mobile_splide );
     splide.mount();
+    mobile_splide.mount();
   });
 </script>
 
@@ -151,40 +240,71 @@
   ],
   "blocks": [
     {
-      "type": "video",
-      "name": "video",
+      "type": "slide",
+      "name": "slide",
       "settings": [
         {
-          "type": "video",
-          "id": "video",
-          "label": "A Shopify-hosted video"
-        }
-      ]
-    },
-    {
-      "type": "image",
-      "name": "image",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        }
-      ]
-    },
-    {
-      "type": "card",
-      "name": "card",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "card_image",
-          "label": "Image"
+          "type": "header",
+          "content": "Image 1"
         },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image 1"
+        },
+        {
+          "type": "text",
+          "id": "link_title_1",
+          "label": "link title 1",
+          "default": "links"
+        },
+        {
+          "type": "url",
+          "id": "link_1",
+          "label": "link 1"
+        },                
+        {
+          "type": "text",
+          "id": "link_title_2",
+          "label": "link title 2",
+          "default": "links"
+        },
+        {
+          "type": "url",
+          "id": "link_2",
+          "label": "link 2"
+        },
+        {
+          "type": "color",
+          "id": "link_color",
+          "label": "Link color",
+          "default": "#fff"
+        },                 
+        {
+          "type": "color",
+          "id": "link_bg",
+          "label": "Link background",
+          "default": "#000000"
+        },                 
         {
           "type": "richtext",
           "id": "paragraph",
           "label": "Paragraph"
+        },
+        {
+          "type": "header",
+          "content": "Image 2",
+          "info": "if image set, then it will take priority over the video"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "A Shopify-hosted video"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
         }
       ]
     }
