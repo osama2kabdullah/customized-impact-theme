@@ -3,14 +3,17 @@
   .custom-collection-grid-{{ section.id }} .splide__arrows {
     display: none;
   }
-  .my-slider-progress {
-    background: #ccc;
-  }
-  .my-slider-progress-bar {
-    background: red;
-    height: 2px;
-    transition: width 400ms ease;
-    width: 0;
+  @media (max-width: 568px) {
+    .custom-collect-grd .section-heading {
+      padding: 20px;
+    }
+    .custom-collect-grd .splide__slide {
+      margin-left: 40px;
+    }
+    .custom-collect-grd {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
   }
 {% endstyle %}
 
@@ -69,12 +72,6 @@
       {% endfor %}
     </div>
   </div>
-  <br>
-
-  <div class="my-slider-progress">
-    <div class="my-slider-progress-bar"></div>
-  </div>
-
 </div>
 
 <script>
@@ -88,19 +85,12 @@
       breakpoints: {
         568: {
           perPage: 2,
-          gap: '5px',
+          type: "loop",
+          gap: '0px',
           drag: true,
         },
       },
     });
-    var bar    = splide.root.querySelector( '.my-carousel-progress-bar' );
-    
-    // Updates the bar width whenever the carousel moves:
-    splide.on( 'mounted move', function () {
-      var end  = splide.Components.Controller.getEnd() + 1;
-      var rate = Math.min( ( splide.index + 1 ) / end, 1 );
-      bar.style.width = String( 100 * rate ) + '%';
-    } );
     splide.mount();
 
   });
@@ -110,7 +100,7 @@
 {
   "name": "Custom collection grid",
   "tag": "section",
-  "class": "section",
+  "class": "section custom-collect-grd",
   "disabled_on": {
     "groups": ["header", "custom.overlay"]
   },

@@ -4,6 +4,9 @@
     display: none;
   }
   @media (max-width: 568px) {
+    .custom-vid-grid-section .splide__slide {
+      margin-left: 40px;
+    }
     .custom-vid-grid-section {
       padding-left: 0 !important;
       padding-right: 0 !important;
@@ -32,7 +35,7 @@
   <div class="splide__track">
     <div class="splide__list">
       {% for block in section.blocks %}
-        <div style="margin-left: 40px;" class="splide__slide">
+        <div class="splide__slide">
           <div>
             {{ block.settings.video | video_tag: class: "video-play", autoplay: true, loop: true, muted: true, controls: false, style: "border-radius: 10px;" }}
             <br>
