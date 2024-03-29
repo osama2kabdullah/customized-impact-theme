@@ -3,6 +3,12 @@
   .custom-video-grid-container-{{ section.id }} .splide__arrows {
     display: none;
   }
+  @media (max-width: 568px) {
+    .custom-vid-grid-section {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
 {% endstyle %}
 
 <div class="splide custom-video-grid-container custom-video-grid-container-{{ section.id }}">
@@ -26,7 +32,7 @@
   <div class="splide__track">
     <div class="splide__list">
       {% for block in section.blocks %}
-        <div class="splide__slide">
+        <div style="margin-left: 40px;" class="splide__slide">
           <div>
             {{ block.settings.video | video_tag: class: "video-play", autoplay: true, loop: true, muted: true, controls: false, style: "border-radius: 10px;" }}
             <br>
@@ -62,6 +68,7 @@
     });  
 
     new Splide('.custom-video-grid-container-{{ section.id }}', {
+      type: "loop",
       perPage: 3,
       perMove: 1,
       drag: false,
@@ -69,8 +76,8 @@
       breakpoints: {
         568: {
           perPage: 2,
-          gap: '5px',
-          drag: true,
+          gap: '0px',
+          drag: "free",
         },
       },
     }).mount();
@@ -81,7 +88,7 @@
 {
   "name": "Custom video grid",
   "tag": "section",
-  "class": "section",
+  "class": "section custom-vid-grid-section",
   "disabled_on": {
     "groups": ["header", "custom.overlay"]
   },
