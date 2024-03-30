@@ -243,6 +243,7 @@
 .custom-grid-container .card > :nth-child(2) {
   border-radius: 20px;
   overflow: hidden;
+  object-fit: cover;
 }
 .custom-grid-container .title {
   text-align: center;
@@ -252,6 +253,7 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+  padding-bottom: 30px;
 }
 .custom-grid-container {
   display: grid;
@@ -428,6 +430,9 @@
   .custom-grid-container {
     grid-template-columns: repeat(1, 1fr); /* Single column layout for mobile */
     gap: 1rem;
+  }
+  .custom-grid-container .card > div {
+    font-size: 11px;
   }
   .custom-grid-container .card > :nth-child(2) {
     padding: 10px;
