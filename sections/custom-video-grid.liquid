@@ -3,9 +3,41 @@
   .custom-video-grid-container-{{ section.id }} .splide__arrows {
     display: none;
   }
+  #videoPopup-{{ section.id }} .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 30px;
+    width: 40px;
+    color: black;
+    height: 40px;
+    background: #ddd;
+    border-radius: 40px;
+    text-align: center;
+    line-height: 37px;
+    z-index: 2;
+  }
+  #videoPopup-{{ section.id }} video {
+    max-width: 100%;
+    max-height: 100vh;
+    margin: auto;
+    width: auto;
+    height: auto;
+  }
+  #videoPopup-{{ section.id }} .close-btn:hover {
+    color: #ccc;
+  }
   @media (max-width: 568px) {
     .custom-vid-grid-section .splide__slide {
       margin-left: 40px;
+    }
+    #videoPopup-{{ section.id }} video {
+      max-width: 100%;
+      max-height: 90vh;
+      margin: auto;
+      width: auto;
+      height: auto;
     }
     .custom-vid-grid-section {
       padding-left: 0 !important;
@@ -14,20 +46,21 @@
   }
 {% endstyle %}
 
+<div id="videoPopup-{{ section.id }}" class="custom-video-popup">
+  <span class="close-btn">&times;</span>
+  <div class="custom-video-popup-content">
+    {{ section.settings.video | video_tag: autoplay: false, loop: true, muted: true, controls: true, image_size: '1000x' }}
+  </div>
+</div>
+
 <div class="splide custom-video-grid-container custom-video-grid-container-{{ section.id }}">
   <div class="section-heading" style="text-align: center;">
     <h2 class="title">{{ section.settings.title }}</h2>
-    <p class="text">
+    <p style="cursor: pointer;" id="openBtn-{{ section.id }}" class="text">
       {{ section.settings.video_message }}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        fill="currentColor"
-        class="bi bi-play-circle-fill"
-        viewBox="0 0 16 16"
-      >
-        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-circle" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+        <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445"/>
       </svg>
     </p>
   </div>
@@ -58,6 +91,26 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+
+    document.getElementById("openBtn-{{ section.id }}").addEventListener("click", function () {
+      document.getElementById("videoPopup-{{ section.id }}").style.display = "block";
+    });
+    
+    document.querySelector("#videoPopup-{{ section.id }} .close-btn").addEventListener("click", function () {
+      closeVideoPopup();
+    });
+    
+    document.getElementById("videoPopup-{{ section.id }}").addEventListener("click", function (event) {
+      if (event.target === this) {
+        closeVideoPopup();
+      }
+    });
+    
+    function closeVideoPopup() {
+      document.getElementById("videoPopup-{{ section.id }}").style.display = "none";
+      const video = document.querySelector("#videoPopup-{{ section.id }} video");
+      video.pause();
+    }    
 
     let videos = document.querySelectorAll(".custom-video-grid-container-{{ section.id }} .video-play");
     videos.forEach(function (video) {
@@ -108,6 +161,11 @@
       "id": "video_message",
       "default": "WATCH THE VIDÉO",
       "label": "Video message"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Popup video"
     }
   ],
   "blocks": [
