@@ -43,8 +43,15 @@
                       <p class="bold">{{ block.settings.title | escape }}</p>
                     {%- endif -%}
 
+                    
+                    
                     {%- if block.settings.content != blank -%}
                       <div class="prose text-subdued">
+
+                        {%- if block.settings.show_logo -%}
+                          {{ block.settings.logo | image_url: width: block.settings.logo.width | image_tag: style: "width: 100px;", alt: block.settings.logo.alt }}
+                        {%- endif -%}
+
                         {{- block.settings.content -}}
                       </div>
                     {%- endif -%}
@@ -147,30 +154,6 @@
           {%- assign locale_selector = true -%}
         {%- endif -%}
 
-        {%- if social_media != blank or country_selector or locale_selector -%}
-          <div class="footer__aside-top">
-            {{- social_media -}}
-
-            {%- if country_selector or locale_selector -%}
-              <div class="h-stack gap-6">
-                {%- if social_media == blank -%}
-                  {%- assign popover_horizontal_position = 'start' -%}
-                {%- else -%}
-                  {%- assign popover_horizontal_position = 'end' -%}
-                {%- endif -%}
-
-                {%- if country_selector -%}
-                  {%- render 'localization-selector', type: 'country', show_country_name: section.settings.show_country_name, show_country_flag: section.settings.show_country_flag, popover_horizontal_position: popover_horizontal_position -%}
-                {%- endif -%}
-
-                {%- if locale_selector -%}
-                  {%- render 'localization-selector', type: 'locale', popover_horizontal_position: popover_horizontal_position -%}
-                {%- endif -%}
-              </div>
-            {%- endif -%}
-          </div>
-        {%- endif -%}
-
         {%- comment -%}
         ----------------------------------------------------------------------------------------------------------------
         COPYRIGHT + PAYMENT METHODS
@@ -187,6 +170,31 @@
           {%- endif -%}
 
           <p class="footer__copyright text-sm text-subdued">© {{ 'now' | date: '%Y' }}, {{ shop.name }}. {{ powered_by_link }}</p>
+
+          {%- if social_media != blank or country_selector or locale_selector -%}
+            <div style="color: {{section.settings.text_color }} !important;" class="footer__aside-top">
+              {{- social_media -}}
+  
+              {%- if country_selector or locale_selector -%}
+                <div class="h-stack gap-6">
+                  {%- if social_media == blank -%}
+                    {%- assign popover_horizontal_position = 'start' -%}
+                  {%- else -%}
+                    {%- assign popover_horizontal_position = 'end' -%}
+                  {%- endif -%}
+  
+                  {%- if country_selector -%}
+                    {%- render 'localization-selector', type: 'country', show_country_name: section.settings.show_country_name, show_country_flag: section.settings.show_country_flag, popover_horizontal_position: popover_horizontal_position -%}
+                  {%- endif -%}
+  
+                  {%- if locale_selector -%}
+                    {%- render 'localization-selector', type: 'locale', popover_horizontal_position: popover_horizontal_position -%}
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
         </div>
       </div>
     </div>
@@ -288,6 +296,22 @@
           "id": "show_payment_icons",
           "label": "Show Payment icons",
           "default": false
+        },
+        {
+          "type": "header",
+          "content": "Logo"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_logo",
+          "label": "Show logo",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Image",
+          "info": "280 x 80px .png recommended"
         }                
       ]
     },

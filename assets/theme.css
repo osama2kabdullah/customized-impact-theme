@@ -1,3 +1,16 @@
+@font-face {
+  font-family: "Moderat";
+  src: ("../assets/Moderat-Regular.woff2") format("woff2"), url("../assets/Moderat-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --heading-font-family:  "Moderat";
+  --text-font-family: "Moderat";
+}
+
 *, :before, :after {
   box-sizing: border-box;
   border-style: solid;
