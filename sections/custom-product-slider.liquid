@@ -1,4 +1,7 @@
 <div class="custom-product-slider-container">
+
+  <h2 style="text-align: center; padding-bottom: 40px;">{{ section.settings.title }}</h2>
+
   <div class="swiper swiper-{{ section.id }}">
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
@@ -110,6 +113,12 @@
     "groups": ["header", "custom.overlay"]
   },
   "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Title",
+      "default": "Vos goûts préférés"
+    },
     {
       "type": "collection",
       "id": "collection",
