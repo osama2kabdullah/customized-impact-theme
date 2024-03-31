@@ -1,6 +1,7 @@
 /*font sizing*/
 .custom-grid-container :is(h1, h2, h3, h4, h5, h6),
 .custom-collection-grid :is(h1, h2, h3, h4, h5, h6),
+.simple-product-slider :is(h1, h2, h3, h4, h5, h6),
 .custom-banner-section :is(h1, h2, h3, h4, h5, h6),
 .custom-one-half-slider :is(h1, h2, h3, h4, h5, h6),
 .custom-video-grid-container :is(h1, h2, h3, h4, h5, h6),
@@ -17,6 +18,7 @@
 .custom-collection-grid h1,
 .custom-video-grid-container h1,
 .custom-image-with-text h1,
+.simple-product-slider h1,
 .custom-one-half-slider h1,
 .custom-banner-section h1 {
   font-size: var(--text-h2);
@@ -24,6 +26,7 @@
 
 .custom-grid-container h2,
 .custom-collection-grid h2,
+.simple-product-slider h2,
 .custom-video-grid-container h2,
 .custom-image-with-text h2,
 .custom-one-half-slider h2,
@@ -33,6 +36,7 @@
 
 .custom-grid-container h3,
 .custom-collection-grid h3,
+.simple-product-slider h3,
 .custom-video-grid-container h3,
 .custom-image-with-text h3,
 .custom-one-half-slider h3,
@@ -42,6 +46,7 @@
 
 .custom-grid-container h4,
 .custom-collection-grid h4,
+.simple-product-slider h4,
 .custom-video-grid-container h4,
 .custom-image-with-text h4,
 .custom-one-half-slider h4,
@@ -51,6 +56,7 @@
 
 .custom-grid-container h5,
 .custom-collection-grid h5,
+.simple-product-slider h5,
 .custom-video-grid-container h5,
 .custom-image-with-text h5,
 .custom-one-half-slider h5,
@@ -60,6 +66,7 @@
 
 .custom-grid-container h6,
 .custom-collection-grid h6,
+.simple-product-slider h6,
 .custom-video-grid-container h6,
 .custom-image-with-text h6,
 .custom-one-half-slider h6,
@@ -177,16 +184,6 @@
 }
 .custom-collection-grid-item:hover img {
   transform: scale(1.1);
-}
-.custom-collection-grid-heading {
-  font-family: var(--heading-font-family);
-  font-weight: var(--heading-font-weight);
-  font-style: var(--heading-font-style);
-  letter-spacing: var(--heading-letter-spacing);
-  text-transform: var(--heading-text-transform);
-  font-size: var(--text-h1);
-  line-height: 1.1;
-  padding: 20px 0;
 }
 .custom-collection-grid-item .custom-collection-grid-title {
   position: absolute;

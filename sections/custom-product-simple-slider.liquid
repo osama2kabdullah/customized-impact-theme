@@ -1,0 +1,94 @@
+{% style %}
+.splide-{{ section.id }} .splide_arrows {
+  display: none;
+}
+{% endstyle %}
+
+<div class="splide simple-product-slider splide-{{ section.id }}" aria-label="Splide Basic HTML Example">
+
+    <div class="section-heading">
+        <h1 style="text-align: center;">{{ section.settings.title }}</h1>
+    </div>
+    <br>
+
+  <div class="splide__track">
+    <div class="splide__list">
+
+      {% if section.settings.products.size > 0 %}
+        {%- for i in (1..5) -%}
+          <div class="splide__slide">
+            <div class="card">
+              <div class="card-image">
+                {{ 'collection-1' | placeholder_svg_tag }}
+              </div>
+              <div class="card-body">
+                <p class="price">9,99€</p>
+                <h4>Citron Gingembre</h4>
+                <p class="desc">Sans sucres ajoutés</p>
+                <div>
+                  <button class="card-btn">Ajouter aupanier</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        {% for product in section.settings.products %}
+          <div class="splide__slide">
+            {%- render 'custom-simple-product-card', product: product, show_badges: true -%}
+          </div>
+        {% endfor %}
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var splide = new Splide('.splide-{{ section.id }}', {
+      perPage: 3,
+      perMove: 1,
+      drag: false,
+      gap: '2rem',
+      breakpoints: {
+        568: {
+          perPage: 2,
+          gap: '.5rem',
+          drag: "free",
+        },
+      },
+    });
+    splide.mount();
+  })
+</script>
+
+{% schema %}
+{
+  "name": "product simple slider",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Section ttitle goes here",
+      "label": "Section Title"
+    },
+    {
+      "type": "product_list",
+      "id": "products",
+      "label": "Products",
+      "limit": 3
+    }
+  ],
+  "presets": [
+    {
+      "name": "product simple slider"
+    }
+  ]
+}
+{% endschema %}
