@@ -23,7 +23,12 @@
 >
   <div class="section-heading">
     <h2>{{ section.settings.heading }}</h2>
-    <a href="{{ section.settings.url }}">
+    <br>
+    <a href="{{ section.settings.url }}" style="
+      display: flex;
+      align-items: center;
+      gap: 10px;
+  ">
       {{- section.settings.url_text }}
 
       <svg

@@ -70,7 +70,7 @@
       {% for block in section.blocks %}
         <div class="splide__slide">
           <div>
-            {{ block.settings.video | video_tag: class: "video-play", autoplay: true, loop: true, muted: true, controls: false, style: "border-radius: 10px;" }}
+            {{ block.settings.video | video_tag: class: "video-play", autoplay: true, loop: true, muted: true, controls: false, style: "border-radius: 10px;max-height: 80vh;width: fit-content;margin: auto;" }}
             <br>
             
             <div style="text-align: center;">
