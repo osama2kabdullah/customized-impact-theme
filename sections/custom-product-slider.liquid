@@ -1,3 +1,29 @@
+{% style %}
+.custom-product-slider-top-wrapper .product-card__title {
+  font-size: 1.5rem;
+}
+@media (max-width: 568px) {
+  .custom-product-slider-top-wrapper .swiper-slide {
+    margin-left: 10px;
+    margin-right: 0px !important;
+  }
+  .custom-product-slider-top-wrapper {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .custom-product-slider-top-wrapper .fruits-icons {
+    gap: 6px;
+  }
+  .custom-product-slider-top-wrapper .fruits-icons img {
+    width: 22px;
+    height: 22px;
+  }
+  .custom-product-slider-top-wrapper .product-card__title {
+    font-size: 1rem;
+  }
+}
+{% endstyle %}
+
 <div class="custom-product-slider-container">
 
   <h2 style="text-align: center; padding-bottom: 40px;">{{ section.settings.title }}</h2>
@@ -78,7 +104,7 @@
     const swiper = new Swiper('.swiper-{{ section.id }}', {
       speed: 400,
       spaceBetween: 100,
-      slidesPerView: 1,
+      slidesPerView: 2,
       loop: true,
       spaceBetween: 10,
       navigation: {
@@ -108,7 +134,7 @@
 {
   "name": "Custom product slider",
   "tag": "section",
-  "class": "section",
+  "class": "section custom-product-slider-top-wrapper",
   "disabled_on": {
     "groups": ["header", "custom.overlay"]
   },
