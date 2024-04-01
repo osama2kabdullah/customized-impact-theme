@@ -1,0 +1,235 @@
+{% style %}
+  #videoPopup-{{ section.id }} .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 30px;
+    width: 40px;
+    color: black;
+    height: 40px;
+    background: #ddd;
+    border-radius: 40px;
+    text-align: center;
+    line-height: 37px;
+    z-index: 2;
+  }
+  #videoPopup-{{ section.id }} video {
+    max-width: 100%;
+    max-height: 100vh;
+    margin: auto;
+    width: auto;
+    height: auto;
+  }
+  #videoPopup-{{ section.id }} .close-btn:hover {
+    color: #ccc;
+  }
+  .pop-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    align-items: center;
+  }
+  .pop-grid-container .grid-item-1 {
+    grid-column: 1 / span 1;
+    grid-row: 1;
+  }
+  .pop-grid-container .grid-item-2 {
+    grid-column: 3 / span 1;
+    grid-row: 1;
+  }
+  .pop-grid-container .grid-item-3 {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 2;
+  }
+  .pop-grid-container .grid-item-4 {
+    grid-column: 1 / span 1;
+    grid-row: 2;
+  }
+  .pop-grid-container .grid-item-5 {
+    grid-column: 3 / span 1;
+    grid-row: 2;
+  }
+  @media (max-width: 768px) {
+    .pop-grid-container {
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 20px;
+    }
+    .pop-grid-container .grid-item-1 {
+      grid-column: 1 / span 1;
+      grid-row: 1;
+    }
+    .pop-grid-container .grid-item-2 {
+      grid-column: 2 / span 1;
+      grid-row: 1;
+    }
+    .pop-grid-container .grid-item-3 {
+      grid-column: 1 / span 2;
+      grid-row: 2 / span 1;
+    }
+    .pop-grid-container .grid-item-4 {
+      grid-column: 1 / span 1;
+      grid-row: 3;
+    }
+    .pop-grid-container .grid-item-5 {
+      grid-column: 2 / span 1;
+      grid-row: 3;
+    }
+  }
+  @media (max-width: 568px) {
+    #videoPopup-{{ section.id }} video {
+      max-width: 100%;
+      max-height: 90vh;
+      margin: auto;
+      width: auto;
+      height: auto;
+    }
+  }
+{% endstyle %}
+
+<div id="videoPopup-{{ section.id }}" class="custom-video-popup">
+  <span class="close-btn">&times;</span>
+  <div class="custom-video-popup-content">
+    {{
+      section.settings.video
+      | video_tag: autoplay: false, loop: true, muted: true, controls: true, image_size: '1000x'
+    }}
+  </div>
+</div>
+
+<div class="custom-video-grid-container custom-video-grid-container-{{ section.id }}">
+  <div class="section-heading" style="text-align: center;">
+    <h2 class="title">{{ section.settings.title }}</h2>
+    <p style="cursor: pointer;" id="openBtn-{{ section.id }}" class="text">
+      {{ section.settings.video_message }}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-play-circle"
+        viewBox="0 0 16 16"
+      >
+        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+        <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445"/>
+      </svg>
+    </p>
+  </div>
+  <br>
+
+  <div class="pop-grid-container">
+    {% for block in section.blocks %}
+      {% if block.type == 'image' %}
+        <div class="grid-item-{{ forloop.index }}">
+          {{ block.settings.image | image_url: width: block.settings.image.width | image_tag: style: 'width: 100%;' }}
+        </div>
+        {% elsif block.type == 'icon' %}
+        <div class="grid-item-{{ forloop.index }}">
+          <div style="text-align: center;">
+            {% if block.settings.image != blank %}
+              {{
+                block.settings.image
+                | image_url: width: block.settings.image.width
+                | image_tag: style: 'margin: auto;max-width: 80px;padding-bottom: 1rem;width: 100%;'
+              }}
+            {% endif %}
+            <div style="max-width: 200px;margin: auto;">
+              {{ block.settings.paragraph }}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('openBtn-{{ section.id }}').addEventListener('click', function () {
+      document.getElementById('videoPopup-{{ section.id }}').style.display = 'block';
+    });
+
+    document.querySelector('#videoPopup-{{ section.id }} .close-btn').addEventListener('click', function () {
+      closeVideoPopup();
+    });
+
+    document.getElementById('videoPopup-{{ section.id }}').addEventListener('click', function (event) {
+      if (event.target === this) {
+        closeVideoPopup();
+      }
+    });
+
+    function closeVideoPopup() {
+      document.getElementById('videoPopup-{{ section.id }}').style.display = 'none';
+      const video = document.querySelector('#videoPopup-{{ section.id }} video');
+      video.pause();
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Custom popup video",
+  "tag": "section",
+  "class": "section custom-vid-popup-section",
+  "disabled_on": {
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Section ttitle goes here",
+      "label": "Section Title"
+    },
+    {
+      "type": "text",
+      "id": "video_message",
+      "default": "WATCH THE VIDÉO",
+      "label": "Video message"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Popup video"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "image",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    },
+    {
+      "type": "icon",
+      "name": "Icon",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "paragraph",
+          "label": "Paragraph",
+          "default": "<h5>Paragraph</h5><p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom popup video"
+    }
+  ]
+}
+{% endschema %}
