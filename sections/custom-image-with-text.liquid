@@ -3,7 +3,19 @@
   width: 30px;
   height: 30px;
 }
-
+.custom-image-with-text-{{ section.id }} {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+  overflow: hidden;
+  {% if section.settings.image_alignment == "left" %}
+    flex-direction: row-reverse;
+    {% else %}
+    flex-direction: row;
+  {% endif %}
+}
 .custom-image-with-text-content .icon-text {
   padding: 16px 0;
   font-size: larger;
@@ -11,10 +23,18 @@
   align-items: center;
   gap: 1rem;
 }
+@media (max-width: 768px) {
+  .custom-image-with-text-{{ section.id }} {
+    flex-direction: column-reverse;
+  {% if section.settings.image_alignment == "left" %}
+    {% else %}
+  {% endif %}
+  }
+}
 {% endstyle %}
 
 <div
-  class="custom-image-with-text"
+  class="custom-image-with-text custom-image-with-text-{{ section.id }}"
   style="background: {{ section.settings.bg_color }};color: {{ section.settings.text_color }};"
 >
   <div class="custom-image-with-text-content">
@@ -69,6 +89,22 @@
       "type": "image_picker",
       "id": "image_with_text_image",
       "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_alignment",
+      "label": "Image alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
     },
     {
       "type": "color",

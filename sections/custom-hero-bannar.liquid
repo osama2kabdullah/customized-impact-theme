@@ -1,10 +1,17 @@
 {% style %}
-.hero-custom-banner-section {
+  .hero-custom-banner-section {
     padding: 0;
   }
   .custom-banner-section {
     background-image: url('{{ section.settings.image | image_url:  width: 1132, height: 750 }}');
-    /* background-image: url('{{ section.settings.image | image_url:  width: 1132, height: 750 }}'), linear-gradient(rgb(0 0 0 / 20%), rgb(0 0 0 / 20%)); */
+  }
+  .hero-custom-banner-section .content h1 {
+    font-size: 5rem;
+  }
+  @media (max-width: 768px) {
+    .hero-custom-banner-section .content h1 {
+      font-size: 3rem;
+    }
   }
 {% endstyle %}
 

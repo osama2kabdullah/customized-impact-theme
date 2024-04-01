@@ -52,7 +52,7 @@
   {%- assign card_class = card_class | append: 'product-card--show-secondary-media' -%}
 {%- endif -%}
 
-{%- assign custom_style = "border: 1px solid black;border-radius: 25px;overflow: hidden;padding: 20px 20px;max-width: 25rem;background: transparent;text-align: center;" -%}
+{%- assign custom_style = "border: 1px solid black;border-radius: 25px;overflow: hidden;padding: 20px 20px;max-width: 25rem;background: #F7F5F4;text-align: center;" -%}
 
 <product-card
   handle="{{ product.handle | escape }}"
@@ -146,7 +146,6 @@
         <div class="rating-with-text">
           <span class="product-card__title"
             ><a style="
-                font-size: x-large;
                 display: block;
                 padding: 12px 0;
                 font-weight: 500;
@@ -163,9 +162,8 @@
           {%- endif -%}
         </div>
       {%- else -%}
-        <span style="font-size: 1.5rem;" class="product-card__title"
+        <span class="product-card__title"
           ><a style="
-            font-size: x-large;
             display: block;
             padding: 12px 0;
             font-weight: 500;
@@ -182,7 +180,7 @@
               <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
               <div class="pointer-fine:hidden">
-                {%- render 'custom-simple-product-button', content: quick_add_label, aria_controls: quick_buy_id -%}
+                {%- render 'custom-simple-product-button', type: 'submit', content: quick_add_label -%}
               </div>
 
               <div class="pointer-coarse:hidden">
@@ -193,16 +191,7 @@
             {%- capture quick_buy_id -%}quick-buy-{{ 'now' | date: '%N' }}{%- endcapture -%}
 
             <div class="pointer-fine:hidden">
-              <button
-                type="button"
-                aria-controls="{{ quick_buy_id }}"
-                aria-expanded="false"
-                aria-label="{{ quick_add_label | escape }}"
-                is="custom-button"
-                class="product-card__mobile-quick-buy-button"
-              >
-                {%- render 'icon' with 'quick-buy-cart' -%}
-              </button>
+              {%- render 'custom-simple-product-button', type: 'submit', content: quick_add_label -%}
             </div>
 
             <div class="pointer-coarse:hidden">

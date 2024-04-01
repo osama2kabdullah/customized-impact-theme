@@ -1,6 +1,21 @@
 {% style %}
-.splide-{{ section.id }} .splide_arrows {
+.splide-{{ section.id }} .splide__arrows {
   display: none;
+}
+.custom-simple-product-slider .product-card__title {
+    font-size: 1.5rem;
+}
+@media (max-width: 768px) {
+  .custom-simple-product-slider .splide__slide {
+    padding-left: .5rem;
+  }
+  .custom-simple-product-slider .product-card__title {
+    font-size: 1rem;
+  }
+  .custom-simple-product-slider {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 {% endstyle %}
 
@@ -54,7 +69,7 @@
       breakpoints: {
         568: {
           perPage: 2,
-          gap: '.5rem',
+          gap: '0rem',
           drag: "free",
         },
       },
@@ -67,7 +82,7 @@
 {
   "name": "product simple slider",
   "tag": "section",
-  "class": "section",
+  "class": "section custom-simple-product-slider",
   "disabled_on": {
     "groups": ["header", "custom.overlay"]
   },
