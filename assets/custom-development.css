@@ -116,8 +116,6 @@
 .btn-group .custom-btn {
   padding: 7px 7px;
   min-width: 160px;
-  font-size: 16px;
-  font-weight: bold;
   border-radius: 5px;
   border: 0;
   color: black;
@@ -240,7 +238,6 @@
   border-radius: 20px;
   overflow: hidden;
   object-fit: cover;
-  max-height: 250px;
 }
 .custom-grid-container .title {
   text-align: center;
@@ -430,7 +427,10 @@
 /* Media query for responsiveness */
 @media (max-width: 768px) {
   .custom-collection-grid-item img {
-    height: 40vh;
+    height: 50vh;
+  }
+  .btn-group .custom-btn {
+    margin-right: 0rem;
   }
   .custom-grid-container .card > :nth-child(1),
   .custom-grid-container .card > :nth-child(2) {
@@ -483,7 +483,7 @@
     flex-direction: row;
   }
   .custom-grid-container .card > * {
-    width: 100%;
+    width: 93%;
   }
   .custom-grid-container .card {
     gap: 0.5rem;
@@ -492,6 +492,9 @@
   .custom-product-slider-container .fruits-card-section {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+  }
+  .custom-grid-container .card > :nth-child(1) {
+    max-height: 250px;
   }
 }
 
