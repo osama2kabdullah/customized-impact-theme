@@ -52,7 +52,7 @@
   {%- assign card_class = card_class | append: 'product-card--show-secondary-media' -%}
 {%- endif -%}
 
-{%- assign custom_style = "border: 1px solid #ddd;border-radius: 10px;overflow: hidden;padding: 20px 20px;max-width: 25rem;background: transparent;" -%}
+{%- assign custom_style = "border: 1px solid #ddd;overflow: hidden;max-width: 25rem;background: transparent;" -%}
 
 <product-card
   handle="{{ product.handle | escape }}"
@@ -123,7 +123,7 @@
     --------------------------------------------------------------------------------------------------------------------
   {%- endcomment -%}
 
-  <div style="padding: 15px 0;" class="product-card__info {% if text_alignment == 'center' %}product-card__info--center{% endif %}">
+  <div style="padding: 15px 0 0;" class="product-card__info {% if text_alignment == 'center' %}product-card__info--center{% endif %}">
     {%- if show_vendor and product.vendor != blank -%}
       {%- if show_rating and text_alignment != 'center' -%}
         <div class="rating-with-text w-full">

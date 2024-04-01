@@ -331,7 +331,7 @@
   cursor: pointer;
 }
 .fruits-icons {
-  padding: 18px 10px 0px 10px;
+  padding: 15px 0px;
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
@@ -428,6 +428,9 @@
 
 /* Media query for responsiveness */
 @media (max-width: 768px) {
+  .custom-collection-grid-item img {
+    height: 40vh;
+  }
   /* vdideo slider */
   .custom-video-popup-content {
     top: 50%;
