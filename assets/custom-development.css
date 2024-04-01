@@ -240,6 +240,7 @@
   border-radius: 20px;
   overflow: hidden;
   object-fit: cover;
+  max-height: 250px;
 }
 .custom-grid-container .title {
   text-align: center;
@@ -430,6 +431,10 @@
 @media (max-width: 768px) {
   .custom-collection-grid-item img {
     height: 40vh;
+  }
+  .custom-grid-container .card > :nth-child(1),
+  .custom-grid-container .card > :nth-child(2) {
+    border-radius: 7px;
   }
   /* vdideo slider */
   .custom-video-popup-content {
