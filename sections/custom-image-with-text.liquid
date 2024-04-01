@@ -1,43 +1,53 @@
 {% style %}
-.custom-image-with-text-content .icon-text svg{
-  width: 30px;
-  height: 30px;
-}
-.custom-image-with-text-{{ section.id }} {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 20px;
-  overflow: hidden;
-  {% if section.settings.image_alignment == "left" %}
-    flex-direction: row-reverse;
-    {% else %}
-    flex-direction: row;
-  {% endif %}
-}
-.custom-image-with-text-content .icon-text {
-  padding: 16px 0;
-  font-size: larger;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-@media (max-width: 768px) {
-  .custom-image-with-text-{{ section.id }} {
-    flex-direction: column-reverse;
-  {% if section.settings.image_alignment == "left" %}
-    {% else %}
-  {% endif %}
+  .custom-image-with-text-content .icon-text svg{
+    width: 30px;
+    height: 30px;
   }
-}
+  .custom-image-with-text-{{ section.id }} {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    overflow: hidden;
+    {% if section.settings.image_alignment == "left" %}
+      flex-direction: row-reverse;
+      {% else %}
+      flex-direction: row;
+    {% endif %}
+  }
+  .custom-image-with-text-content .icon-text {
+    padding: 16px 0;
+    font-size: larger;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .custom-image-with-text-content-{{ section.id }} {
+    padding: 20px;
+  }
+  @media (max-width: 768px) {
+    .custom-image-with-text-content-{{ section.id }} {
+      {% if section.settings.padding_on_mobile %}
+        padding: 20px;
+        {% else %}
+        padding: 0px;
+      {% endif %}
+    }
+    .custom-image-with-text-{{ section.id }} {
+      flex-direction: column-reverse;
+    {% if section.settings.image_alignment == "left" %}
+      {% else %}
+    {% endif %}
+    }
+  }
 {% endstyle %}
 
 <div
   class="custom-image-with-text custom-image-with-text-{{ section.id }}"
   style="background: {{ section.settings.bg_color }};color: {{ section.settings.text_color }};"
 >
-  <div class="custom-image-with-text-content">
+  <div class="custom-image-with-text-content custom-image-with-text-content-{{ section.id }}">
     {% for block in section.blocks %}
       {% case block.type %}
         {% when 'button' %}
@@ -117,6 +127,12 @@
       "id": "text_color",
       "label": "Text color",
       "default": "#fff"
+    },
+    {
+      "type": "checkbox",
+      "id": "padding_on_mobile",
+      "label": "Content padding on mobile",
+      "default": true
     }
   ],
   "blocks": [
@@ -197,7 +213,7 @@
   "presets": [
     {
       "name": "Custom image with text",
-      "blocks": [{"type": "heading"}, {"type": "paragraph"}, {"type": "button"}]
+      "blocks": [{ "type": "heading" }, { "type": "paragraph" }, { "type": "button" }]
     }
   ]
 }
