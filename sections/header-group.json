@@ -8,21 +8,28 @@
         "message": {
           "type": "message",
           "settings": {
-            "text": "Announce something here",
+            "text": "St patrick | Utilisez le code 40PATRICK",
+            "url": ""
+          }
+        },
+        "message_kYqRWg": {
+          "type": "message",
+          "settings": {
+            "text": "St patrick | Utilisez le code 40PATRICK",
             "url": ""
           }
         }
       },
       "block_order": [
-        "message"
+        "message",
+        "message_kYqRWg"
       ],
-      "disabled": true,
       "settings": {
         "enable_sticky": false,
-        "text_size": "text-xs",
+        "text_size": "text-base",
         "navigation_mode": "scrolling",
         "scrolling_speed": 10,
-        "background": "#1a1a1a",
+        "background": "#474e31",
         "background_gradient": "",
         "text_color": "#ffffff"
       }
@@ -32,7 +39,7 @@
       "settings": {
         "enable_sticky": true,
         "hide_on_scroll": false,
-        "logo": "{{shop.brand.logo}}",
+        "logo": "shopify:\/\/shop_images\/Design_sans_titre_21.png",
         "logo_max_width": 120,
         "logo_mobile_max_width": 100,
         "menu": "main-menu",
@@ -42,11 +49,12 @@
         "opening_from": "bottom",
         "layout": "logo_left_navigation_center",
         "show_social_media": true,
-        "show_locale_selector": true,
-        "show_country_selector": true,
-        "show_country_flag": true,
+        "show_locale_selector": false,
+        "show_country_selector": false,
+        "show_country_flag": false,
         "show_country_name": false,
         "transparent_header_text_color": "#ffffff",
+        "transparent_logo": "shopify:\/\/shop_images\/Design_sans_titre_22.png",
         "reduce_padding": false,
         "background_opacity": 100,
         "background_blur_radius": 0

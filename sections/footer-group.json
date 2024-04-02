@@ -9,9 +9,11 @@
           "type": "text",
           "settings": {
             "title": "",
-            "content": "<h3>Store<\/h3><p>Use this text area to tell your customers about your brand and vision. You can change it in the theme editor.<\/p>",
+            "content": "<p>Plongez dans l'hydratation. Votre oasis de boissons vous attend.<\/p>",
             "show_socials": true,
-            "show_payment_icons": false
+            "show_payment_icons": false,
+            "show_logo": true,
+            "logo": "shopify:\/\/shop_images\/Bello_Logo_White_329b5df8-1bfd-4d71-ba79-eac52cc37eb8.png"
           }
         },
         "links": {
@@ -34,7 +36,8 @@
             "title": "Payment Accepts",
             "content": "",
             "show_socials": false,
-            "show_payment_icons": true
+            "show_payment_icons": true,
+            "show_logo": false
           }
         }
       },
@@ -45,8 +48,8 @@
         "text_X8KhNH"
       ],
       "settings": {
-        "background": "#586f12",
-        "text_color": "#fff",
+        "background": "#597012",
+        "text_color": "#ffffff",
         "show_social_media": false,
         "show_payment_icons": false,
         "show_country_selector": true,

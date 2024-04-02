@@ -1,0 +1,349 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_tag": "h2"
+          }
+        },
+        "text_JnQGV8": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Jusqu'à 12 portions par capsule (boissons de 12 oz)<\/p>"
+          }
+        },
+        "separator": {
+          "type": "separator",
+          "settings": {}
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_taxes_notice": false
+          }
+        },
+        "liquid_63GTnL": {
+          "type": "liquid",
+          "settings": {
+            "liquid": "<!DOCTYPE html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Images avec texte<\/title>\n  <style>\n    .container {\n      display: flex;\n      flex-wrap: wrap;\n      justify-content: space-between;\n      margin: 20px;\n    }\n    .item {\n      width: calc(25% - 15px); \/* Ajustement de la largeur des colonnes pour 4 éléments par ligne sur ordinateur *\/\n      margin-bottom: 20px;\n      display: flex;\n      align-items: center;\n    }\n    .image {\n      width: auto; \/* Ajustement de la taille des images *\/\n      height: 2em; \/* Hauteur relative pour correspondre à la taille du texte *\/\n      margin-right: 15px; \/* Espacement entre l'image et le texte *\/\n    }\n    .text {\n      font-size: 13px; \/* Taille de texte réduite *\/\n    }\n\n    .row-gap {\n      width: 100%; \/* Assure que l'espace soit égal à la largeur de la ligne *\/\n      height: 20px; \/* Espacement entre chaque rangée *\/\n    }\n\n    @media only screen and (max-width: 600px) {\n      .item {\n        width: calc(50% - 10px); \/* Ajustement de la largeur des colonnes pour 2 éléments par ligne sur mobile *\/\n      }\n    }\n  <\/style>\n<\/head>\n<body>\n\n<div class=\"container\">\n  <div class=\"item\">\n    <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0669\/1382\/9110\/files\/7_480x480.jpg?v=1711897656\" alt=\"Image 1\" class=\"image\">\n    <div class=\"text\">Citron<\/div>\n  <\/div>\n  <div class=\"item\">\n    <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0669\/1382\/9110\/files\/8_480x480.jpg?v=1711897656\" alt=\"Image 2\" class=\"image\">\n    <div class=\"text\">Pomme<\/div>\n  <\/div>\n  <div class=\"item\">\n    <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0669\/1382\/9110\/files\/10_480x480.jpg?v=1711897656\" alt=\"Image 3\" class=\"image\">\n    <div class=\"text\">Sel de mer<\/div>\n  <\/div>\n  <div class=\"item\">\n    <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0669\/1382\/9110\/files\/16_480x480.jpg?v=1711915523\" alt=\"Image 4\" class=\"image\">\n    <div class=\"text\">Vitamines B3<\/div>\n  <\/div>\n  <!-- Espacement entre les rangées -->\n  <div class=\"item\">\n    <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0669\/1382\/9110\/files\/15_480x480.jpg?v=1711915521\" alt=\"Image 5\" class=\"image\">\n    <div class=\"text\">Vitamines B6<\/div>\n  <\/div>\n<\/div>\n\n<\/body>\n<\/html>"
+          }
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {
+            "show_empty": false
+          }
+        },
+        "payment_terms": {
+          "type": "payment_terms",
+          "settings": {}
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "hide_sold_out_variants": false,
+            "stack_blocks": false,
+            "selector_mode": "dropdown",
+            "color_mode": "variant",
+            "size_chart_page": "valeur-nutritionnelle-citron-gingembre"
+          }
+        },
+        "offer_irNNaX": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-coupon",
+            "custom_icon": "shopify:\/\/shop_images\/Capture_d_ecran_2024-04-01_a_03.06.06.png",
+            "icon_width": 40,
+            "title": "0.75€ par boisson | 33cl",
+            "content": "",
+            "background": "#f7f5f4",
+            "text_color": "#000000"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_payment_button": false,
+            "atc_button_background": "#474e31",
+            "atc_button_text_color": "",
+            "payment_button_background": "#474e31",
+            "payment_button_text_color": ""
+          }
+        },
+        "offer_JbDqjq": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-truck",
+            "custom_icon": "shopify:\/\/shop_images\/2_97009a39-5e56-4d4d-b597-ec58bca4badc.png",
+            "icon_width": 36,
+            "title": "DÉLAIS",
+            "content": "<p>Nos délais de livraison standard sont de 3 à 5 jours ouvrés.<\/p>",
+            "background": "#d5d3be",
+            "text_color": "#000000"
+          }
+        },
+        "offer_4HW7Lz": {
+          "type": "offer",
+          "settings": {
+            "text_alignment": "start",
+            "icon_position": "aligned",
+            "icon": "picto-plane",
+            "custom_icon": "shopify:\/\/shop_images\/3_38ae9d81-f671-4cc4-b937-08467a942556.png",
+            "icon_width": 36,
+            "title": "LIVRAISON",
+            "content": "<p>La livraison est gratuite à partir de 30€<\/p>",
+            "background": "#f2e9db",
+            "text_color": "#000000"
+          }
+        },
+        "collapsible_text_RGDMGM": {
+          "type": "collapsible_text",
+          "settings": {
+            "title": "BÉNÉFICES",
+            "content": "<ul><li>Extraits naturels<\/li><li>Vitamines précieuses<\/li><li>Zéro sucre<\/li><li>Sans-OGM<\/li><li>Sans calories<\/li><li>Fabriqué au Canada<\/li><\/ul>"
+          }
+        },
+        "collapsible_text_amMnDV": {
+          "type": "collapsible_text",
+          "settings": {
+            "title": "DESCRIPTION",
+            "content": "<p>Piquant. Acidulé. Energisant. Le <strong>citron <\/strong>est le boss de la citronneraie, prêt à vous booster quand la vie devient fade.<br\/><br\/>Avec la recharge Citron Gingembre faites-vous plaisir avec plus de 15 litres de bonté fruitée.<\/p>"
+          }
+        },
+        "associated_products_EYxezg": {
+          "type": "associated_products",
+          "settings": {
+            "title": "Buy it with",
+            "stack_products": true,
+            "products_count": 5,
+            "background": "",
+            "text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "text_JnQGV8",
+        "separator",
+        "badges",
+        "price",
+        "liquid_63GTnL",
+        "rating",
+        "payment_terms",
+        "quantity_selector",
+        "variant_picker",
+        "offer_irNNaX",
+        "buy_buttons",
+        "offer_JbDqjq",
+        "offer_4HW7Lz",
+        "collapsible_text_RGDMGM",
+        "collapsible_text_amMnDV",
+        "associated_products_EYxezg"
+      ],
+      "settings": {
+        "full_width": true,
+        "show_fixed_add_to_cart": true,
+        "desktop_media_width": 55,
+        "desktop_media_layout": "grid_highlight",
+        "mobile_media_size": "expanded",
+        "mobile_carousel_control": "thumbnails",
+        "enable_video_autoplay": false,
+        "enable_video_looping": true,
+        "enable_image_zoom": true,
+        "max_image_zoom_level": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "input_background": "rgba(0,0,0,0)",
+        "input_text_color": ""
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "recommendations_count": 6,
+        "products": [
+          "antioxydant-berries",
+          "hibiscus-water",
+          "lemon-cucumber",
+          "lemon-ginger",
+          "lemon-blueberry"
+        ],
+        "full_width": false,
+        "stack_products": false,
+        "show_progress_bar": false,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "subheading": "",
+        "title": "You may also like",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "rich_text_3DqcRn": {
+      "type": "rich-text",
+      "blocks": {
+        "subheading_zAx7GE": {
+          "type": "subheading",
+          "settings": {
+            "text": "SIMPLIFIEZ L'HYDRATATION"
+          }
+        },
+        "heading_3dmJBn": {
+          "type": "heading",
+          "settings": {
+            "text": "Les meilleurs ingrédients, réunis en une recharge",
+            "heading_tag": "h4",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "richtext_GLN7Me": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Avec ses extraits de fruits et ses vitamines essentielles, métamorphosez votre eau purifiée en une boisson fruitée et revigorante.<br\/><br\/>DEFILER LES INGRÉDIENTS ➞<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_zAx7GE",
+        "heading_3dmJBn",
+        "richtext_GLN7Me"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "custom_liquid_NDHiYU": {
+      "type": "custom-liquid",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "liquid": "<!DOCTYPE html>\n<html lang=\"fr\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Barre de défilement avec icônes<\/title>\n<style>\n    .scrolling-container {\n        max-width: 100%; \/* Largeur maximale de la barre de défilement *\/\n        overflow-x: auto; \/* Activer la barre de défilement horizontale automatique *\/\n        white-space: nowrap; \/* Empêcher le retour à la ligne des éléments *\/\n        text-align: center; \/* Centrer les éléments sur l'entièreté du conteneur *\/\n    }\n\n    .scrolling-item {\n        display: inline-block;\n        vertical-align: top;\n        margin-right: 40px; \/* Espacement entre les éléments par défaut *\/\n        text-align: center; \/* Centrer le contenu *\/\n    }\n\n    .scrolling-item img {\n        width: 60px; \/* Taille de l'image *\/\n        height: 60px;\n        display: block; \/* Permet de centrer l'image *\/\n        margin: 0 auto; \/* Centrer l'image horizontalement *\/\n    }\n\n    .scrolling-item h3 {\n        margin: 10px 0 5px; \/* Espacement entre l'icône et le sous-titre *\/\n        font-size: 16px;\n        font-weight: 800; \/* Utilisation du poids de police maximum pour le sous-titre *\/\n        padding: 2px 10px; \/* Espacement autour du texte *\/\n        display: inline-block; \/* Permettre au fond d'occuper seulement la largeur du texte *\/\n        background-color: #F7F5F4; \/* Couleur de fond *\/\n        border-radius: 10px; \/* Bordure arrondie *\/\n    }\n\n    .scrolling-item p {\n        margin: 5px 0; \/* Espacement entre le sous-titre et le texte *\/\n        font-size: 14px;\n    }\n\n    \/* Style de la barre de défilement *\/\n    .scrolling-container::-webkit-scrollbar {\n        display: none; \/* Supprimer la barre de défilement *\/\n    }\n\n    \/* Media query pour ajuster l'espacement sur les écrans d'ordinateur *\/\n    @media screen and (min-width: 768px) {\n        .scrolling-item {\n            margin-right: 100px; \/* Réduire l'espacement entre les éléments sur les écrans d'ordinateur *\/\n        }\n    }\n<\/style>\n<\/head>\n<body>\n<div class=\"scrolling-container\">\n    <div class=\"scrolling-item\">\n        <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0669\/1382\/9110\/files\/4_1f96a564-eb4b-4beb-a98f-4f7973c6210f.png?v=1711987802\" alt=\"Icône 1\">\n        <strong><h3>Citron jaune<\/h3><\/strong>\n        <p>Un allié précieux<br> pour améliorer l'humeur<\/p>\n    <\/div>\n    <div class=\"scrolling-item\">\n        <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0669\/1382\/9110\/files\/5_93410b54-4aec-4e03-b0e9-49ea9c932648.png?v=1711987803\" alt=\"Icône 2\">\n        <strong><h3>Pomme<\/h3><\/strong>\n        <p>Riche en vitamines, <br>fibres et antioxydants<\/p>\n    <\/div>\n    <div class=\"scrolling-item\">\n        <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0669\/1382\/9110\/files\/6_4a9a02b4-cba2-480a-9780-e2327b524ee8.png?v=1711987800\" alt=\"Icône 3\">\n        <strong><h3>Sel de mer<\/h3><\/strong>\n        <p>Contribue à une <br>santé équilibrée<\/p>\n    <\/div>\n    <div class=\"scrolling-item\">\n        <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0669\/1382\/9110\/files\/8_40913cab-bb61-4685-a8af-71e202397ed3.png?v=1711987802\" alt=\"Icône 4\">\n        <h3>Vitamine B3<\/h3>\n        <p>Soutient la santé<br> cardiovasculaire<br> et cérébrale <\/p>\n    <\/div>\n    <div class=\"scrolling-item\">\n        <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0669\/1382\/9110\/files\/7_e1bcf9ef-83ff-4bb2-b9d5-b962d0a25c01.png?v=1711987803\" alt=\"Icône 5\">\n        <h3>Vitamine B6<\/h3>\n        <p>Régule l'humeur <br>et le sommeil<\/p>\n    <\/div>\n<\/div>\n<\/body>\n<\/html>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "custom_liquid_Ac6THJ": {
+      "type": "custom-liquid",
+      "settings": {
+        "full_width": false,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": true,
+        "liquid": "<!DOCTYPE html>\n<html lang=\"fr\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Shopify Desktop Template<\/title>\n<style>\n    .container {\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        margin-bottom: 30px;\n    }\n\n    .video-container {\n        width: 50%;\n        position: relative; \/* Permet de positionner le texte sur la vidéo *\/\n        overflow: hidden; \/* Cache les parties de la vidéo dépassant du conteneur *\/\n    }\n\n    .video-container video {\n        max-width: 100%;\n        height: auto;\n        pointer-events: none; \/* Empêche les événements de souris sur la vidéo *\/\n    }\n\n    .text-container {\n        width: 45%;\n        padding: 0 15px;\n    }\n\n    .text-container h2 {\n        font-size: 24px;\n        font-weight: bold;\n        margin-bottom: 10px;\n    }\n\n    .text-container p {\n        font-size: 16px;\n        line-height: 1.5;\n        margin-bottom: 10px;\n    }\n\n    .icon-container {\n        display: flex;\n        align-items: center;\n        margin-left: -3%; \/* Déplacer l'icône vers la gauche de 10% *\/\n    }\n\n    .icon-container img {\n        width: 4em;\n        height: auto;\n        margin-right: 10px;\n    }\n\n    \/* Media query pour ajuster les styles sur les écrans de bureau *\/\n    @media screen and (max-width: 1024px) {\n        .container .video-container, .text-container {\n            width: 100%;\n        }\n    }\n<\/style>\n<\/head>\n<body>\n<div class=\"container\">\n    <div class=\"video-container\">\n        <video autoplay loop muted>\n            <source src=\"https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/d54c1306ebcb42b4ba36a8012efdbe47.mp4\" type=\"video\/mp4\">\n            Your browser does not support the video tag.\n        <\/video>\n    <\/div>\n    <div class=\"text-container\"><br><br>\n        <h2>De l'eau. Une recharge. C'est prêt !<\/h2>\n        <p>Personnalisez votre eau avec des capsules faites de vrais fruits, plantes et minéraux.<\/p><br>\n        <div class=\"icon-container\"><br>\n            <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0669\/1382\/9110\/files\/3_ac7f85c9-6e90-4c5f-b041-08e0a49ace74.png?v=1712013581\" alt=\"Icône\">\n\n            <p>Buvez plus de d'eau.<\/p>\n        <\/div><br>\n        <div class=\"icon-container\">\n            <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0669\/1382\/9110\/files\/Capture_d_ecran_2024-04-01_a_03.06.06.png?v=1711933673\" alt=\"Icône\">\n            <p>Une expérience de boisson revitalisante<\/p>\n        <\/div><br>\n        <div class=\"icon-container\">\n            <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0669\/1382\/9110\/files\/2_73185066-4914-47d2-923c-ab44078bfdb4.png?v=1712013582\" alt=\"Icône\">\n            <p>L'eau la plus pure et la plus riche en nutriments que vous n'ayez jamais goûtée.<\/p>\n        <\/div>\n    <\/div>\n<\/div>\n<\/body>\n<\/html>",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "revealed_image_on_scroll_bbQj4e": {
+      "type": "revealed-image-on-scroll",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Design_sans_titre_8.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/Design_sans_titre_19.png",
+        "subheading": "",
+        "title": "Buvez plus d'eau, plus de l'énergie.",
+        "background": "",
+        "text_color_inside": "#ffffff",
+        "text_color_outside": "#000000"
+      }
+    },
+    "testimonials_EHQkfJ": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_hnYXnt": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 4,
+            "author": "John S.",
+            "title": "La meilleure eau jamais goûté !",
+            "content": "<p>Cette eau était litteralement trop délicieuse<\/p>"
+          }
+        },
+        "testimonial_4ULjiU": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 5,
+            "author": "Mary U.",
+            "title": "Testimonial 2",
+            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.<\/p>"
+          }
+        },
+        "testimonial_qybqHd": {
+          "type": "testimonial",
+          "settings": {
+            "round_avatar": true,
+            "show_rating": true,
+            "rating": 4,
+            "author": "Joshua A.",
+            "title": "Testimonial 3",
+            "content": "<p>Share what your customers are saying about your products, customer service or shipping rates.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_hnYXnt",
+        "testimonial_4ULjiU",
+        "testimonial_qybqHd"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_testimonials": true,
+        "subheading": "",
+        "title": "Nos clients en parlent mieux que nous",
+        "content": "<p>Basé sur <span style=\"text-decoration:underline\"><strong>534 avis<\/strong><\/span><\/p>",
+        "link_url": "",
+        "link_text": "",
+        "background": "#f6f3eb",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "testimonial_card_background": "#fff",
+        "testimonial_card_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-products",
+    "rich_text_3DqcRn",
+    "custom_liquid_NDHiYU",
+    "custom_liquid_Ac6THJ",
+    "revealed_image_on_scroll_bbQj4e",
+    "testimonials_EHQkfJ"
+  ]
+}
