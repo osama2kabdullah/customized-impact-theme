@@ -1,16 +1,3 @@
-@font-face {
-  font-family: "Moderat";
-  src: ("../assets/Moderat-Regular.woff2") format("woff2"), url("../assets/Moderat-Regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-:root {
-  --heading-font-family:  "Moderat";
-  --text-font-family: "Moderat";
-}
-
 #shopify-product-reviews {
   --spr-max-width: 50rem;
   --spr-star-list-gap: .125rem;
