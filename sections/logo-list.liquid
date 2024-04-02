@@ -31,15 +31,11 @@
 
   <div {% render 'section-properties' %}>
     <div class="section-stack {% if section.settings.text_alignment == 'center' %}sm:justify-items-center{% endif %}">
-      <div class="prose {% if section.settings.text_alignment == 'center' %}text-center{% endif %}">
-        {%- if section.settings.title != blank -%}
-          <h2 class="h2">
-            {%- render 'styled-text', content: section.settings.title, text_color: section.settings.heading_color, gradient: section.settings.heading_gradient -%}
-          </h2>
-        {%- endif -%}
-
-        {{- section.settings.content -}}
-      </div>
+      {%- for block in section.blocks -%}
+        <div {% unless forloop.first %}style="display: none;"{% endunless %} class="prose prose-here prose-{{ section.id }}-{{ forloop.index }} {% if section.settings.text_alignment == 'center' %}text-center{% endif %}">
+          {{- block.settings.content -}}
+        </div>
+      {% endfor %}
 
       <reveal-items style="display: flex;" class="logo-list {% unless section.settings.stack_mobile %}scroll-area bleed sm:unbleed{% endunless %}">
         {%- for block in section.blocks -%}
@@ -63,7 +59,7 @@
               {{- block_content -}}
             </a>
           {%- else -%}
-            <div {{ item_attribute }} {{ block.shopify_attributes }}>
+            <div onclick="showHere('prose-{{ section.id }}-{{ forloop.index }}')" {{ item_attribute }} {{ block.shopify_attributes }}>
               {{- block_content -}}
             </div>
           {%- endif -%}
@@ -72,6 +68,15 @@
     </div>
   </div>
 {%- endif -%}
+
+<script>
+  function showHere(dom) {
+    document.querySelectorAll(".prose-here").forEach(el=>{
+      el.style.display = "none";
+    })
+    document.querySelector("."+dom).style.display = "block";
+  }
+</script>
 
 {% schema %}
 {
@@ -94,17 +99,6 @@
       "id": "stack_mobile",
       "label": "Stack on mobile",
       "default": true
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Heading",
-      "default": "Logo list"
-    },
-    {
-      "type": "richtext",
-      "id": "content",
-      "label": "Content"
     },
     {
       "type": "select",
@@ -177,6 +171,11 @@
       "name": "Logo",
       "settings": [
         {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
           "type": "image_picker",
           "id": "logo",
           "label": "Logo",
@@ -204,12 +203,6 @@
     {
       "name": "Logo list",
       "blocks": [
-        {
-          "type": "logo"
-        },
-        {
-          "type": "logo"
-        },
         {
           "type": "logo"
         },
